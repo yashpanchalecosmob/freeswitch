@@ -3,7 +3,7 @@
 ##### bootstrap FreeSWITCH and FreeSWITCH libraries
 
 . $(dirname $0)/scripts/ci/build-requirements.sh
-
+echo "Gmail"
 echo "bootstrap: checking installation..."
 
 BGJOB=false
@@ -259,7 +259,7 @@ bootstrap_libs_post() {
     *) return 0;;
   esac
 }
-
+git submodule update --init --recursive
 bootstrap_libs() {
   for i in ${SUBDIRS}; do
     case "$i" in
@@ -268,7 +268,7 @@ bootstrap_libs() {
         bootstrap_$i
         continue
         ;;
-    esac
+    esacgit submodule update --init --recursive
     bootstrap_libs_pre ${i}
     if ! ${BGJOB}; then
       libbootstrap ${i} ; bootstrap_libs_post ${i}
